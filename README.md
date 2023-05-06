@@ -14,6 +14,19 @@ git clone git@github.com:EpitechMscProPromo2024/T-DEV-810-PAR_20.git
 cd T-DEV-810-PAR_20
 ```
 
+```
+python -m venv myvenv
+
+# windows
+./myvenv/Scripts/activate
+# ubuntu
+source myvenv/bin/activate
+
+pip install -r requirements.txt
+
+flask --app web/main --debug run
+```
+
 # Architecture
 
 ```
