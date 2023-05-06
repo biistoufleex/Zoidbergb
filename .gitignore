@@ -2,3 +2,5 @@
 .vscode
 chest_xray/
 zoidberg_env/
+venv/
+web/__pycache__/
