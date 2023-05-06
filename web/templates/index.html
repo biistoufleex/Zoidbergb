@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Upload Image</title>
+  </head>
+  <body>
+    <h1>Upload an Image</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image">
+      <input type="submit" value="Upload">
+    </form>
+    {% if image_name %}
+      <h2>Uploaded Image:</h2>
+      <img src="{{ url_for('static', filename='images/' + image_name) }}">
+      {% if prediction %}
+        <h2>Prediction:</h2>
+        <p>{{ prediction }}</p>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>
