@@ -2,6 +2,40 @@
 <html>
   <head>
     <title>Upload Image</title>
+    <head>
+      <title>Upload Image</title>
+    
+      <style>
+        h1 {
+          text-align: center;
+        }
+      
+        form {
+          width: 300px;
+          height: 40px;
+          border: 1px solid black;
+          border-radius: 10px;
+          padding: 1rem;
+          margin: 0 auto;
+        }
+      
+        div {
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          width: 100%;
+          height: 300px
+        }
+      
+        h2 {
+          text-align: center;
+        }
+      
+        p {
+          text-align: center;
+        }
+      </style>
+      </head>
   </head>
   <body>
     <h1>Upload an Image</h1>
@@ -18,6 +52,8 @@
       {% endif %}
     {% endif %}
 
-    <a target="_blank" href="{{ url_for('static', filename='images/' + 'zoidberg.html') }}">Export Zoidberg</a>
+    <div>
+      <img src="{{ url_for('static', filename='images/' + image_name) }}">
+    </div>
   </body>
 </html>
