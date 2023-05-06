@@ -12,9 +12,7 @@ MODEL_SAVED = CHECKPOINT_DIR + 'best_model.h5'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # # set variable for model
-input_data="chest_xray/"
-train_directory= input_data + "train/"
-class_names=os.listdir(train_directory)
+class_names=['NORMAL', 'PNEUMONIA']
 
 # load model
 new_model = tf.keras.models.load_model(MODEL_SAVED)
