@@ -15,6 +15,9 @@ cd T-DEV-810-PAR_20
 ```
 
 ```
+# Supprimer les fichier .DS_Store
+find . -name '.DS_Store' -type f -delete
+
 python -m venv myvenv
 
 # windows
