@@ -4,6 +4,8 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import layers
 from keras.models import Sequential
+from keras.callbacks import ModelCheckpoint
+
 
 batch_size = 32
 img_height = 180
@@ -85,12 +87,16 @@ model.compile(optimizer='adam',
 # Résumé du modèle
 model.summary()
 
+# Create a callback allowing to save the best performing model
+checkpoint = ModelCheckpoint("saved_model.model.h5", monitor='val_loss', verbose=1, save_best_only=True, min_delta = .002)
+
 # Former le modèle
-epochs=20
+epochs=10
 history = model.fit(
   train_ds,
   validation_data=val_ds,
-  epochs=epochs
+  epochs=epochs,
+  callbacks=[checkpoint]
 )
 
 # Visualisez les résultats de l'entraînement
@@ -128,16 +134,19 @@ img_sain2 = DATA_DIR + TEST + "/" + NORMAL + "/NORMAL2-IM-0051-0001.jpeg"
 img_sain3 = DATA_DIR + TEST + "/" + NORMAL + "/NORMAL2-IM-0376-0001.jpeg"
 img_sain4 = DATA_DIR + TEST + "/" + NORMAL + "/IM-0043-0001.jpeg"
 
-img = tf.keras.utils.load_img(
-    img_pneuno4, target_size=(img_height, img_width)
-)
-img_array = tf.keras.utils.img_to_array(img)
-img_array = tf.expand_dims(img_array, 0) # Create a batch
+list_test = [img_pneuno1, img_pneuno2, img_pneuno3, img_pneuno4, img_sain1, img_sain2, img_sain3, img_sain4]
 
-predictions = model.predict(img_array)
-score = tf.nn.softmax(predictions[0])
+for test in list_test:
+  img = tf.keras.utils.load_img(
+      test, target_size=(img_height, img_width)
+  )
+  img_array = tf.keras.utils.img_to_array(img)
+  img_array = tf.expand_dims(img_array, 0)
 
-print(
-    "This image most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-)
+  predictions = model.predict(img_array)
+  score = tf.nn.softmax(predictions[0])
+
+  print(
+      "This image most likely belongs to {} with a {:.2f} percent confidence."
+      .format(class_names[np.argmax(score)], 100 * np.max(score))
+  )

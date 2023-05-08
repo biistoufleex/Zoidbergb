@@ -42,9 +42,8 @@ def index():
     return render_template('index.html')
 
 def get_prediction(image_name):
-    print('--------------------------'+image_name)
     img = tf.keras.utils.load_img(
-        image_name, target_size=(224, 224)
+        image_name, target_size=(180, 180)
     )
     img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)
