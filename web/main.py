@@ -8,7 +8,7 @@ app = Flask(__name__)
 # set upload folder
 UPLOAD_FOLDER = 'static/images'
 CHECKPOINT_DIR = 'saved_model/'
-MODEL_SAVED = CHECKPOINT_DIR + 'best_model.h5'
+MODEL_SAVED = CHECKPOINT_DIR + 'zoidberg_model.h5'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # # set variable for model
@@ -43,7 +43,7 @@ def index():
 
 def get_prediction(image_name):
     img = tf.keras.utils.load_img(
-        image_name, target_size=(180, 180)
+        image_name, target_size=(224, 224)
     )
     img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)
