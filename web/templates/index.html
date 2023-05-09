@@ -11,13 +11,13 @@
     </form>
     {% if image_name %}
       <h2>Uploaded Image:</h2>
-      <img src="{{ url_for('static', filename='images/' + image_name) }}" width="400" height="500">
+      <img src="{{ url_for('static', filename='images/' + image_name) }}" width="350" height="400">
       {% if prediction %}
         <h2>Prediction:</h2>
         <p>{{ prediction }}</p>
       {% endif %}
     {% endif %}
 
-    <a target="_blank" href="{{ url_for('static', filename='images/' + 'zoidberg.html') }}">Export Zoidberg</a>
+    <a target="_blank" href="{{ url_for('static', filename='images/' + 'zoidberg_epitech.html') }}">Export Zoidberg</a>
   </body>
 </html>
