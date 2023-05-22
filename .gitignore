@@ -1,6 +1,7 @@
 .env
 .vscode
-chest_xray/
+chest_xray/test/
+chest_xray/train/
 zoidberg_env/
 venv/
 web/__pycache__/
